@@ -1,0 +1,44 @@
+{% extends "feedback/base.html" %}
+{% load crispy_forms_tags %}
+{% block content0 %}
+{% endblock content0 %}
+
+
+
+
+
+{% block content %}
+    <div class="content-section mx-auto" style="background-color: #f7e7ce;border-radius: 10px;">
+        
+
+{% for i in obj %}
+<p>
+<a href="{% url 'doctor' i.user.username %}">{{ i.user.username }}</a>
+</p>
+
+{% endfor %}
+
+                <!--
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't have An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+            </small>
+        </div>
+    
+    </div>
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+            
+          </div>
+        </div>
+      </main>
+      -->
+{% endblock content %}

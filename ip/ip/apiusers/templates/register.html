@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+
+{% block content1 %}
+<h1 style=" text-align: center; font-family: 'Arial'; font-weight: 30; font-size: 70px;  ">Register to use our Api</h1>
+{% endblock content1 %}
+
+<!--
+{% block content2 %}
+
+{% endblock content2 %}
+<style>
+body {
+    background-color: #d49292;
+     /*--#95ea94*/
+}
+</style>
+-->
+
+{% block content %}
+<div class="content-section" style="background-color: #fdf498;">
+        <form method="POST" >
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form|crispy }}
+                {{ user_info_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'api_login' %}">Sign In</a>
+            </small>
+        </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,244 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome {{user.username}}</title>
+  <link rel="icon" href="{% static 'logo.png' %}" type="image/icon type">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+ 
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" >
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap" rel="stylesheet">
+	<style>
+    .navbar {
+        transition: all 0.4s;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .navbar .nav-link {
+        color: #fff;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .navbar .navbar-brand {
+        color: #fff;
+    }
+
+
+
+    .navbar.active {
+        background: white;
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar.active .nav-link {
+        color: #555;
+    }
+
+    .navbar.active .nav-link:hover,
+    .navbar.active .nav-link:focus {
+        color: #555;
+        text-decoration: none;
+    }
+
+    .navbar.active .navbar-brand {
+        color: #555;
+    }
+
+
+    @media (max-width: 991.98px) {
+        .navbar {
+            background: #fff;
+        }
+
+        .navbar .navbar-brand, .navbar .nav-link {
+            color: #555;
+        }
+    }
+
+
+    .text-small {
+        font-size: 0.9rem !important;
+    }
+
+		#updateProfile{
+			color: grey;
+			margin-top: 20px;
+			margin-left: 174px;
+			transition-duration: 0.4s;
+			border-radius: 30px;
+			width:35%;
+			background-color: white;
+			border-color: rgb(73, 235, 52);
+			border-width: 5px;
+			color: black;
+		}
+
+		#updateProfile:hover{
+			color:white;
+			background-color: rgb(2, 191, 8);
+			border-color: rgb(2, 191, 8);
+		}
+
+		body{
+			  background-image: url("{% static 'bac1.jpg' %}");
+  			background-repeat: no-repeat;
+    		background-size: 100% 80%;
+		}
+		.card{
+			box-shadow: 0px 4px 8px 4px rgba(50,50,50,0.1);
+/*            color: black !important;
+*/          border-radius: 5px;
+			display: block;
+            margin-left: 0px;
+            margin-right: 50px;
+            padding: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width: 1150px!important;
+            background-color: rgb(250,250,250);
+		}
+
+		.middle {
+  			transition: .5s ease;
+			opacity: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			text-align: center;
+		}
+
+		.profilePic{
+			width:500px;
+			height:500px;
+			background-size:cover;
+			border-radius: 5px;
+			background-position:center;
+		}
+
+		.pictureContainer:hover .profilePic {
+		  	opacity: 0.3;
+		}
+
+		.pictureContainer:hover .middle {
+		  	opacity: 1;
+		}
+
+		#uploadPhoto {
+		  	background-color: rgb(66, 245, 72);
+		  	color: black;
+		  	font-weight: bold;
+		  	font-size: 16px;
+		  	padding: 16px 32px;
+		  	border-color: rgb(119, 218, 247);
+		  	box-shadow: 4px 4px 4px 4px rgba(50,50,50,0.25);
+		}
+
+		p{
+			font-family: 'Heebo', sans-serif;
+		}
+	</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top py-3" >
+    <div class="container"><a href="{% url 'home-page' %}" class="navbar-brand"><img src="{% static 'logoname.png' %}" style="height: 40px; width: 132px;"></a>
+        <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+          <div style="margin-left: 550px;">
+          <div id="navbarSupportedContent" class="collapse navbar-collapse">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link scroll-link" href="#one">Book Appointment <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link scroll-link" href="{% url 'store' %}">Shop</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link scroll-link" href="{% url 'blog-home' %}">Blogs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link scroll-link" href="#four">Playlist</a>
+                  </li>
+        
+                  <li class="nav-item">
+                      <a class="nav-link scroll-link" href="{% url 'profile' %}">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link scroll-link" href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout</a>
+
+                      <form id="logout" method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+  <input type="hidden">
+  </form>
+                  </li>
+              </ul>
+          </div>
+          </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="card" style="width: 120rem; : ">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12 boxy">
+            <div class="pictureContainer">
+              <img src={{ user.image.url }} class="profilePic">
+              <div class="middle">
+                <a href="{% url 'uploadPhoto' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="uploadPhoto">UPLOAD PHOTO</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12 boxy">
+            <p style="color:grey;">HELLO EVERYONE, THIS IS</p>
+            <p style="font-size: 50px;font-weight: bold">{{user.username}}</p>
+            <p>{{user.doctor.specialization}}</p>
+            
+            <!-- <p style="color: grey;">Some quick example text to build on the card title and make up the bulk of the card's content. which is his basic information</p> -->
+            <br>
+            <img src={% static "first_name.png" %} style="margin-right: 10px; margin-bottom: 20px;"/><span style="margin-bottom: 13px!important; font-weight: bold; color:gray;font-size: 16px;"><span style="color: rgb(80,80,80)">FIRST NAME: </span>{{user.firstname}}</span>
+            <br>
+            <img src={% static "last_name.png" %} style="margin-right: 10px; margin-bottom: 20px;"/><span style="margin-bottom: 13px!important; font-weight: bold; color:gray;font-size: 16px;"><span style="color: rgb(80,80,80)">LAST NAME:</span> {{user.lastname}}</span>
+            <br>
+            <img src={% static "calendar.png" %} style="margin-right: 10px; margin-bottom: 20px;" /><span style="margin-bottom: 13px!important; font-weight: bold; color:gray;font-size: 16px;"><span style="color: rgb(80,80,80)">EXPERIENCE:</span> {{user.doctor.experience}}</span>
+            <br>
+            <img src={% static "hospital.png" %} style="margin-right: 10px; margin-bottom: 20px;" /><span style="margin-bottom: 13px!important; font-weight: bold; color:gray;font-size: 16px;"><span style="color: rgb(80,80,80)">HOSPITAL:</span> {{user.doctor.hospital_name}}</span>
+            <br>
+            <img src={% static "charge.png" %} style="margin-right: 10px; margin-bottom: 20px;" /><span style="margin-bottom: 13px!important; font-weight: bold; color:gray;font-size: 16px;"><span style="color: rgb(80,80,80)">CONSULTATION FEE:</span> {{user.doctor.consultation_fee}}</span>
+            <br>
+            <img src={% static "email.png" %} style="margin-right: 10px; margin-bottom: 20px;"/><span style="margin-bottom: 13px!important; font-weight: bold; color:gray;font-size: 16px;"><span style="color: rgb(80,80,80)">MAIL:</span> {{user.email}}</span>
+            <br>
+            <a href="{% url 'profile_update' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="updateProfile">UPDATE PROFILE</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
+

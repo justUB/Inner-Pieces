@@ -1,0 +1,188 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content0 %}
+    <title>Sign Up</title>
+   <!--  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">  -->
+ <style>
+     .pdrow:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .pdcolumn {
+    float: left;
+    width: 40%;
+    /* 20 */
+  }
+  .dl {
+      size: 550;
+  }
+  
+  body  {
+       overflow-x : hidden; 
+        overflow-y: hidden;
+      /*background-image : url("{% static 'doctor-patient1.jpg' %}");*/
+      /*background-size: 1000px 850px;*/
+      background-size: 10px 25px;
+      /*background-color: #DC143C;*/
+      /*background-color: lightcoral; */
+       background-color:crimson; 
+      /* mediumseagreen,   */
+
+
+  }
+  .bl   {
+
+  }
+  .lc {
+      color:brown;
+      /* orangered */
+  }
+
+ </style>
+
+{% endblock content0 %}
+
+
+
+{% block content %}
+
+<div class="bi" style="background-image:url('{% static 'patientRegisterImage.jpg' %}');background-size:880px 1000px; background-repeat:no-repeat; ">
+<div class="ml-auto" style="width: fit-content; margin-right:  3em;">
+    
+    
+  </div>
+
+    <div class="row">
+    <div class="col md-10">
+       <!-- <img src="{% static 'join1.png' %}" style="text-align:center; margin-top: 6em; height: 200px ; width: 400px;"> -->
+    </div>
+    <div class="content-section ml-auto " style="width:40%; height:680px; border-radius: 0px; margin-top: 5em; margin-right: 2.8em; margin-bottom: 0em;; ">
+        {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           <!-- <fieldset class="form-group"> -->
+                <legend class="border-bottom mb-4" style="text-align:center; font-size: 2em;color: brown;">Create an account <br></legend> 
+                <!-- form  ,  patient_form -->
+                <!--
+                  
+                {{ patient_form }}
+
+                -->
+                <div class="pdrow">
+                  <div class="pdcolumn">
+                      <div class="cfirstname">
+                          <label class="lc"><strong>First Name</strong></label>
+                          <br>
+                         <div class="dl"> {{ form.firstname  }} </div>
+
+                      </div>
+                  </div>
+                  
+                      
+                  <div class="clastname">
+                      <label class="lc"><strong>Last Name</strong></label>
+                      <br>
+                      <div class="cl">{{ form.lastname  }}</div>
+                  
+                  </div>
+                  <br>
+                      
+                  <div class="pdcolumn">
+                      <div class="cemail">
+                          <label class="lc"><strong>Email</strong></label>
+                          <br>
+                          {{ form.email}}
+                      </div>
+                  </div>
+                  
+                  <div class="cusername">
+                      <label class="lc"><strong>Username</strong></label>
+                      <br>
+                      {{ form.username }}
+                  </div>
+                  <br>
+                  
+                  <div class="pdcolumn">
+                      <div class="cdob">
+                          <label class="lc"><strong>Date of Birth</strong></label>
+                          <br>
+                          {{ patient_form.dob }}
+                      </div>
+                  </div>
+                  
+                  
+                  
+                  
+                  <div class="coccupation">
+                      <label class="lc"><strong>occupation</strong></label>
+                      <br>
+                      {{ patient_form.occupation }}
+                  </div>
+                  <br>
+                  
+
+                  <div class="pdcolumn">
+                      <div class="cpassword1">
+                          <label class="lc"><strong>Password</strong></label>
+                          <br>
+                          {{ form.password1 }}
+                      </div>
+                  </div>
+                  
+                  <div class="cpassword2">
+                      <label class="lc"><strong>Confirm Password</strong></label>
+                      <br>
+                      {{ form.password2 }}
+                  </div>
+
+                  <div class="cgender" >
+                      <label><strong class="lc">Gender</strong></label>
+                      <br>
+                      {{ patient_form.gender }}
+                  </div>
+                  <br>
+                </div>
+
+                {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <!-- <strong>{{ error|escape }}</strong> -->
+                <li>{{ error|escape }}</li>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+           <li>{{ error|escape }}</li>
+        </div>
+    {% endfor %}
+{% endif %}
+
+           <!-- </fieldset> -->
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Log In</a>
+            </small>
+        </div>
+    </div>
+    
+    </div>
+
+    </div>
+{% endblock content %}
+

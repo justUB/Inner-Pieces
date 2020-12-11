@@ -1,0 +1,187 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content0 %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"> -->
+
+<style>
+  .pdrow:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .pdcolumn {
+    float: left;
+    width: 40%;
+    /* 20 */
+  }
+  body  {
+    overflow-x : hidden;
+    overflow-y: hidden;
+   /* background-color:tomato ; */ 
+    /* background-color: rgb(13, 16, 44); */
+    background-color: rgb(0, 139, 139);
+  }
+
+  .navbar-brand   {
+    /*background-color: white; */
+  }
+
+  .lc {
+    color:rgb(0, 139, 139);
+    
+  }
+
+</style>
+
+{% endblock content0 %}
+
+
+
+
+
+
+{% block content %}
+<div class="bi" style="background-image:url('{% static 'doctorRegisterImage.jpg' %}');background-size:870px 990px; background-repeat:no-repeat; ">
+
+<div class="ml-auto" style="width: fit-content; margin-right:  3em;">
+    
+    
+  </div>
+
+    <div class="row">
+    <div class="col md-10">
+       <!-- <img src="{% static 'join.png' %}" style="text-align:center; margin-top: 6em; height: 200px ; width: 400px;"> -->
+    </div>
+    <div class="content-section ml-auto " style="width:40%; border-radius: 0px; margin-top: 5em; margin-right: 3em; ">
+        {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+        <form method="POST" enctype="multipart/form-data" class="doctorForm">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="text-align:center; font-size: 2em;color:darkcyan; ">Create an account <br></legend>
+                <!--
+               
+                {{ doctor_form }}
+                -->
+
+                
+      <div class="pdrow">
+        <div class="pdcolumn">
+          <div class="dfirstname">
+            <label class="lc"><strong>First Name</strong></label>
+            <br>
+            {{ form.firstname }}
+          </div>
+        </div>
+        
+        <div class="dlastname">
+          <label><strong class="lc">Last Name</strong></label>
+          <br>
+          {{ form.lastname }}
+        </div>
+        <br>
+        
+
+        <div class="pdcolumn">
+          <label><strong class="lc">Email</strong></label>
+          <br>
+          {{ form.email }}
+
+        </div>
+
+        <div class="dusername">
+          <label><strong class="lc">Username</strong></label>
+          <br>
+          {{ form.username }}
+        </div>
+        <br>
+
+        <div class="pdcolumn">
+          <div class="dhospitalname">
+            <label><strong class="lc">Hospital Name</strong></label>
+            <br>
+            {{ doctor_form.hospital_name }}
+          </div>
+        </div>
+
+        <div class="dspecialization">
+          <label><strong class="lc">Specialization</strong></label>
+          <br>
+          {{ doctor_form.specialization }}
+        </div>
+        <br>
+
+        <div class="pdcolumn">
+          <div class="dexperience">
+            <label><strong class="lc">Experience</strong></label>
+            <br>
+            {{ doctor_form.experience }}
+          </div>
+
+        </div>
+
+        <div class="dconsultationfee">
+          <label><strong class="lc">Consultation Fee</strong></label>
+          <br>
+          {{ doctor_form.consultation_fee }}
+        </div>
+        <br>
+
+        <div class="pdcolumn">
+          <div class="dpassword1">
+            <label><strong class="lc">Password</strong></label>
+            <br>
+            {{ form.password1 }}
+          </div>
+        </div>
+
+        <div class="dpassword2">
+          <label><strong class="lc">Confirm Password</strong></label>
+          <br>
+          {{ form.password2 }}
+        </div>
+        <br>
+        
+        {% if form.errors %}
+          {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <!-- <strong>{{ error|escape }}</strong> -->
+                    <li>{{ error|escape }}</li>
+                </div>
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+              <li>{{ error|escape }}</li>
+             </div>
+          {% endfor %}
+      {% endif %}
+      <br>
+
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Log In</a>
+            </small>
+        </div>
+    </div>
+    
+    </div>
+</div>
+    
+{% endblock content %}
+

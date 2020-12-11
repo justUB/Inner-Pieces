@@ -1,0 +1,208 @@
+
+
+
+{% extends "feedback/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content0 %}
+{% endblock content0 %}
+
+
+<style>
+  .card-header{
+    background-color: rgb(236, 169, 44,0.8) !important;
+  }
+  .card-body{
+    background-color: rgb(236, 169, 44,0.5) !important;
+  }
+</style>
+
+
+{% block content %}
+<div class="container" style="margin-top: 90px;">
+<div class="row" style="margin-left: 820px; margin-bottom: 30px;">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Feedback</button>
+
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo" style="margin-left: 20px;">Your Feedbacks</button>
+</div>
+{% if user.is_authenticated %}
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog" role="document" >
+        <div class="modal-content" style="background-color: #f7e7ce;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Feedback</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" >
+            <form method="POST">
+              {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Feedback</legend>
+                {{ form|crispy }}
+            </fieldset>
+            
+        
+            <div class="form-group modal-footer" style="align-self: center; margin-right: 35%;">
+                <button class="btn btn-outline-info" type="submit">Add Feedback</button>
+            </div>
+             
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog" role="document" >
+        <div class="modal-content" style="background-color: #f7e7ce;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Feedbacks given by You</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" >
+            {% if feedbacks_by_user %}
+              {% for i in feedbacks_by_user %}
+                <p>
+                 Your Feedbacks about<a class="ml-2 text-muted" href="#"><em style="color: #00e;">Dr.{{i.doctor.user.username}}</em> </a>     
+                </p>
+                <!--<div class="form-group modal-footer" style="align-self: center; margin-right: 35%;">
+                    <button class="btn btn-outline-info" type="submit">Add Feedback</button>
+                </div>-->
+              {% endfor %}
+            {% else %}
+              <p> You haven't given any feedbacks yet. </p>
+            {% endif %}
+            <!--<div class="form-group modal-footer" style="align-self: center; margin-right: 35%;">
+                <button class="btn btn-outline-info" type="submit">Add Feedback</button>
+            </div>-->
+             
+          </div>
+
+        </div>
+      </div>
+    </div>
+{% else %}
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modal-dialog-centered" role="document" >
+        <div class="modal-content" style="background-color: #f7e7ce;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="align-self: center;">Feedback</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"  style="align-self: center;">
+            <p> <em> <b> You must login to add Feedback </b> </em></p>
+             
+             <div class="form-group modal-footer" style="align-self: center; margin-right: 35%;">
+                <a class="btn btn-outline-info"  href="{% url 'login' %}">Login</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modal-dialog-centered" role="document" >
+        <div class="modal-content" style="background-color: #f7e7ce;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="align-self: center;">Your Feedbacks</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"  style="align-self: center;">
+            <p> <em> <b> You must login to View Feedbacks given by You </b> </em></p>
+             
+             <div class="form-group modal-footer" style="align-self: center; margin-right: 35%;">
+                <a class="btn btn-outline-info"  href="{% url 'login' %}">Login</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+{% endif %} 
+  {% for i in obj %}
+  <div class="card">
+    <div class="card-header" style="background-color: rgb(236, 169, 44,0.8) !important;">
+      
+      <img title="{{ i.patient.user.username }}" src={{ i.patient.user.image.url }} height="50px" width="50px"/><span style="font-size: 25px; margin-left: 10px; font-weight: bold;">{{ i.title }}</span> 
+      <div>
+      <p style="text-align: right;"> {{ i.date_posted }} </p>
+      </div>
+    </div>
+    <div class="card-body" style="background-color: rgb(236, 169, 44,0.5) !important;">
+      {{ i.content }}
+    </div>
+  </div>
+  
+  <br>
+  {% endfor %}  
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>
+  <!-- <div class="content-section mx-auto" style="background-color: #f7e7ce;border-radius: 10px;">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Feedback</legend>
+                {{ form|crispy }}
+            </fieldset>
+            
+        
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Add Feedback</button>
+            </div>
+        
+
+        </form>
+
+    </div> -->
+    
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+            
+          </div>
+        </div>
+      </main>
+{% endblock content %}
+
+

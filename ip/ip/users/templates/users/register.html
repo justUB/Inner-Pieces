@@ -1,0 +1,125 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content0 %}
+        <meta charset="utf-8">
+        <title>Sign Up</title>
+        
+    
+    <style>
+
+        body{
+           /* background-image: url('{% static 'r16.jpg' %}'); */
+           /* background-repeat : no-repeat; */
+            /* background-size: 1600px 1000px; */
+            /* background-size : cover; */
+            background-image: url('{% static 'registerback1.jpg' %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            overflow: hidden;
+            
+        }
+        .card{
+        background-color: rgb(255,255,255);
+        box-shadow: 0px 4px 8px rgba(50,50,50,0.25); 
+        margin-top: 80px;
+        margin-bottom: 10px;
+        margin-left: 100px;
+        width: 80% !important;
+        height: 500px;
+        border-radius: 30px;
+      }
+      .card:hover{
+        transition: all 0.5s ease-out;
+        box-shadow: 0px 4px 8px rgb(112, 223, 238,0.5);
+        top: -4px;
+        border: 0px 0px 10px 0px solid rgba(112, 223, 238);
+  
+      }
+      #Register{
+      color:white;
+      
+			margin-top: 30px;
+			transition-duration: 0.4s;
+			background-color:#5d68c9;
+            border-color: #5d68c9;
+			border-width: 3px;
+            width: 30%;
+		
+  }
+  #Register:hover{
+      font-weight: bold;
+      border-width: 5px;
+			color:black;
+			background-color: #7b9bf3;
+			border-color: #5d68c9;
+    }
+        /*
+        .i1 {
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        }*/
+
+        .choice {
+            margin-top : 15em;
+            margin-left : 50em;
+            border-radius: 10px;
+            border : 1px solid blue;
+            border-width: 1px;
+            width: 400px;
+        }
+
+    </style>
+
+{% endblock content0 %}
+
+
+
+{% block content %}
+    <!-- <div class="i1" style="background-image: url('{% static 'registerImage.jpg' %}');"> -->
+    <!-- <div class="i1" >
+
+        <div class="choice" >
+            <h3><a href="{% url 'patient_register' %}" style="color: rgb(219, 91, 16);"><h1>Register as Patient</h1></a></h3>
+            <h3><a href="{% url 'doctor_register' %}" style="font-color:rgb(200, 230, 34);"><h1>Register as Doctor</h1></a></h3>
+            
+        </div>
+
+        
+        
+    </div> -->
+    <div class="row">
+        <div class="col-lg-6">
+            <br>
+            <br>
+            
+            <div class="card text-center" style="width: 18rem;">
+                
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 40px;"><img src="{% static 'psychologist.jpeg' %}" height="300px" width="400px"><br>If you are a Psychologist</h5>
+                    
+                    <a href="{% url 'doctor_register' %}" class="btn btn-primary" id="Register">Register here</a>
+                </div>
+            </div>
+            <br>
+            
+        </div>
+        <div class="col-lg-6">
+            <br>
+            <br>
+            
+            <div class="card text-center" style="width: 18rem;">
+                
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 40px;"><img src="{% static 'user.jpeg' %}" height="300px" width="400px"><br>If you are a User</h5>
+                    
+                    <a href="{% url 'patient_register' %}" class="btn btn-primary" id="Register">Register here</a>
+                </div>
+            </div>
+            <br>
+            
+        </div>
+    </div>
+{% endblock content %}

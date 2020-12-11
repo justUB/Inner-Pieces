@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .form-field{
+        width:250px;
+        display: inline-block;
+        padding: 5px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row" style="margin-left:15%; margin-top:10em; margin-bottom:5em; ">
+        <div class="card col-lg-5 " style="border:2px black;background-color:white;height:fit-content;"><img src="{% static 'checkout_banner.jpg' %}" style="margin-top:1em;">
+            
+            <div style="box-shadow:hsl(0, 0%, 80%) 0 0 16px;background-color: #fff;border-radius: 4px;padding: 10px;margin-top:1em;" id="form-wrapper">
+				<form id="form">
+					{% if user.is_authenticated == False %}
+					<div id="user-info">
+                        <h5 style="font-family: 'Times New Roman', Times, serif;margin-left:1em;">Contact Info:</h5>
+						<hr>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Name..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Email..">
+						</div>
+					</div>
+					<hr>
+					{% endif %}
+					
+					<div id="shipping-info">
+						
+						<h5 style="font-family: 'Times New Roman', Times, serif;margin-left:1em; font-size:1.5em;">Shipping Information:</h5>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Address..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="City..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="State..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+						</div>
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-dark" type="submit" value="Continue" style="margin-right:2em;">
+				</form>
+			</div>
+
+			<br>
+			<div class="hidden" style="box-shadow:hsl(0, 0%, 80%) 0 0 16px;background-color: #fff;border-radius: 4px;padding: 10px; margin-bottom:1em;" id="payment-info">
+				<small>Paypal Options</small>
+				<div id="paypal-button-container"></div>
+				<!-- <button class="btn btn-primary" id="make-payment">proceed to pay</button> -->
+			</div>
+			
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4" style="border:2px;">
+            <div style=" box-shadow:hsl(0, 0%, 80%) 0 0 16px;background-color: #fff;border-radius: 4px;padding: 10px;">
+                <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; To cart</a>
+                <hr>
+                <h2>Your order</h2>
+				<hr>
+				<div style="overflow-y:scroll;height:20em;">
+					<div style="display: flex;align-items: flex-stretch;padding-bottom: 10px;margin-bottom: 10px;border-bottom: 1px solid #ececec;">
+						<div style="flex:2"></div>
+						<div style="flex:2"><strong>Product Name</strong></div>
+						<div style="flex:1"><strong>Price</strong></div>
+						<div style="flex:1"><strong>Quantity</strong></div>
+					</div>
+				{% if items %}
+				{% for item in items %}
+                <div style="display: flex;align-items: flex-stretch;padding-bottom: 10px;margin-bottom: 10px;border-bottom: 1px solid #ececec;">
+                    <div style="flex:2"><img src="{{item.item.image.url}}" style="width:100px"></div>
+                    <div style="flex:2"><strong>{{item.item.name}}</strong></div>
+                    <div style="flex:1"><strong>${{item.item.price}}</strong></div>
+                    <div style="flex:1"><strong>&nbsp;&nbsp;&nbsp;{{item.quantity}}</strong></div>
+				</div>
+				{% endfor %}
+				{% else %}
+				<div style="display: flex;align-items: flex-stretch;padding-bottom: 10px;margin-bottom: 10px;border-bottom: 1px solid #ececec;">
+                    <img src="{% static 'empty-cart-banner.png' %}" style="margin: 5% 30%">
+				</div>
+				
+				{% endif %}
+				</div>
+				
+				<p style="margin-left: 15%;font-size: 1.2em;"><strong>Total Items: </strong>{{order.total_quantity}}&nbsp;&nbsp;&nbsp;&nbsp;<strong>Bill amount: </strong>${{order.total_bill}} </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://www.paypal.com/sdk/js?client-id=AbbNK1J5YNMNm34ktJa2FIX9cJNSyqMVDp5aRse-P3O1QBcKvW-9obQ3ZMy-zFDicPaplI1PQobRm-q3&currency=USD"></script>
+
+<script>
+	var total_b = '{{order.total_bill}}'
+	
+	 // Render the PayPal button into #paypal-button-container
+	paypal.Buttons({
+
+		style:{
+			color:  'blue',
+			shape:  'pill',
+			label:  'pay',
+			height: 50,
+			
+		},
+		// Set up the transaction
+		createOrder: function(data, actions) {
+			return actions.order.create({
+				purchase_units: [{
+					amount: {
+						value: parseFloat(total_b).toFixed(2)
+					}
+				}]
+			});
+		},
+
+		// Finalize the transaction
+		onApprove: function(data, actions) {
+			return actions.order.capture().then(function(details) {
+				// Show a success message to the buyer
+				submitFormdata()
+			});
+		}
+	}).render('#paypal-button-container');
+</script>
+<script>
+	var total = '{{order.total_bill}}'
+	var form = document.getElementById('form')
+	form.addEventListener('submit',function(e){
+		e.preventDefault()
+		document.getElementById('form-button').classList.add('hidden')
+		document.getElementById('payment-info').classList.remove('hidden')
+	})
+
+	/*document.getElementById('make-payment').addEventListener('click',function(e){
+		submitFormdata()
+	})*/
+
+	function submitFormdata(){
+		console.log('Form submitted')
+		var UserFormData = {
+			'name' : null,
+			'email' : null,
+			'total' : total,
+		}
+
+		var shippingdata = {
+			'address' : null,
+			'city' : null,
+			'state' : null,
+			'zipcode' : null,
+		}
+
+		shippingdata.address = form.address.value
+		shippingdata.city = form.city.value
+		shippingdata.state = form.state.value
+		shippingdata.zipcode = form.zipcode.value
+		if (user == 'AnonymousUser'){
+			UserFormData.name = form.name.value
+			UserFormData.email = form.email.value
+		}
+
+		var url = '/ecom/process_order/'
+		fetch(url,{
+			method:'POST',
+			headers:{
+				'Content-Type' : 'application/json',
+				'X-CSRFToken': csrftoken
+			},
+
+			body: JSON.stringify({'form':UserFormData,'shipping':shippingdata}),
+		})
+
+		.then((response) =>{
+			return response.json()
+		})
+	
+		.then((data) =>{
+			console.log('Success:', data)
+			alert('Transaction Complete')
+
+			cart={}
+			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+			
+			window.location.href = "{% url 'store' %}"
+		})
+	}
+</script>
+{% endblock %}

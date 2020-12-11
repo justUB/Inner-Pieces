@@ -1,0 +1,651 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="icon" href="{% static 'logo.png' %}" type="image/icon type">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+   
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" >
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
+<style>
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 200px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;}
+header{
+  overflow-y: hidden
+}
+*
+{
+  overflow-x : hidden;
+}
+
+.navbar {
+    transition: all 0.4s;
+}
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand {
+    color: #fff;
+}
+
+
+
+.navbar.active {
+    background: white;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.active .nav-link {
+    color: #555;
+}
+
+.navbar.active .nav-link:hover,
+.navbar.active .nav-link:focus {
+    color: #555;
+    text-decoration: none;
+}
+
+.navbar.active .navbar-brand {
+    color: #555;
+}
+
+
+@media (max-width: 991.98px) {
+    .navbar {
+        background: #fff;
+    }
+
+    .navbar .navbar-brand, .navbar .nav-link {
+        color: #555;
+    }
+}
+
+
+.text-small {
+    font-size: 0.9rem !important;
+}
+
+
+body {
+
+    font-family: "Helvetica Neue",sans-serif;
+      font-weight: lighter;;
+
+}
+
+.bg-cover {
+    background-size: cover;
+   }
+
+.bg-center {
+    background-position: center center;
+}
+
+code {
+  background: #fff;
+  padding: 0.2rem;
+  border-radius: 0.1rem;
+  text-shadow: none;
+}
+
+.demo-text {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+}
+
+
+
+.overlay-dark {
+    position: relative;
+}
+
+.overlay-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    display: block;
+    opacity: 0.55;
+    width:100%;
+    background-size:cover;
+}
+
+.overlay-content {
+    z-index: 99;
+    position: relative;
+   
+}
+
+#button-addon1 {
+  color: #ffc371;
+}
+
+i {
+  color: #ffc371;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+  box-shadow: none;
+}
+html { font-size: 0.75rem; }
+
+@media (min-width: 576px) {
+    html { font-size: 0.75rem; }
+}
+@media (min-width: 768px) {
+    html { font-size: 1rem; }
+}
+@media (min-width: 992px) {
+    html { font-size: 1.10rem; }
+}
+@media (min-width: 1200px) {
+    html { font-size: 1.10rem; }
+}
+
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 500px;
+}
+
+
+
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}
+
+
+.accordion-section .panel-default .panel-title a {
+    display: block;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+.accordion-section .panel-default .panel-title a:after {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: 1rem;
+    content: "\f068";
+    color: #1f7de2;
+    float: right;
+    margin-top: -12px;
+}
+.accordion-section .panel-default .panel-title a.collapsed:after {
+    content: "\f067";
+}
+.accordion-section .panel-default .panel-body {
+    font-size: 1rem;
+}
+
+
+.carousel-indicators li {
+    border: none;
+    background: #ccc;
+}
+
+.carousel-indicators li.active {
+    background: #28a745;
+}
+header{
+    width: 100%;
+    height: 100vh;
+    background: url({% static 'land.jpeg' %}) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.blink {
+  animation: blink 0.5s infinite;
+}
+
+.flex {
+  display: flex;
+}
+.header-sub-title {
+  color: #000000;
+  font-family: 'Satisfy', cursive;
+  font-size: 45px;
+  padding: 0.3em;
+}
+
+p{
+ font-family: "Gentona ";
+}
+
+.mb_parallax_container {
+  height: 80vh;
+  width: 100vw;
+  
+  padding-top: 20vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mb_parallax_overlay {
+  height: 60vh;
+  width: 60vw;
+  margin: auto;
+  
+  opacity: .9;
+}
+
+#mb_parallax_one {
+  background-image: url({% static 'background3.jpg' %});
+}
+
+.smiling{
+  text-align: center;
+  font-family: 'Neuton', serif;
+  color: rgb(50,50,50);
+  font-size: 60px;
+  margin-bottom: 40px;
+}
+</style>
+    <title>Inner Pieces</title>
+  </head>
+  <body>
+
+
+
+
+
+    <header >
+    <nav class="navbar navbar-expand-lg fixed-top py-3" >
+        <div class="container"><a href="#" class="navbar-brand"><img src="{% static 'logoname.png' %}" style="height: 60px; width: 200px;"></a>
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link scroll-link" href="#one">Book Appointment <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#two">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="{% url 'blog-home' %}">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#four">Playlist</a>
+                    </li>
+              {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link scroll-link" href="{% url 'feedback' %}">Feedback</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout</a>
+
+                        <form id="logout" method="POST" action="{% url 'logout' %}">
+                          {% csrf_token %}
+  <input type="hidden">
+</form>
+                    </li>
+               {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        
+                    </li> -->
+                    
+              {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="font-weight-bolder display-1 text-align-centre" style="padding-top:20vw;color:#F2F3F3">
+  </div>
+  <div class="flex">
+  <p class="header-sub-title" id="word"></p><p class="header-sub-title blink">|</p>
+</div>
+</header>
+
+
+
+<script>
+      const words = ["Welcome to Inner Pieces","Begin your journey to happiness", ""];
+let i = 0;
+let timer;
+
+function typingEffect() {
+  let word = words[i].split("");
+  var loopTyping = function() {
+    if (word.length > 0) {
+      document.getElementById('word').innerHTML += word.shift();
+    } else {
+      deletingEffect();
+      return false;
+    };
+    timer = setTimeout(loopTyping, 270);
+  };
+  loopTyping();
+};
+
+function deletingEffect() {
+  let word = words[i].split("");
+  var loopDeleting = function() {
+    if (word.length > 0) {
+      word.pop();
+      document.getElementById('word').innerHTML = word.join("");
+    } 
+    else
+     {
+      if (words.length > (i + 1))
+       {
+        i++;
+      } 
+      else 
+      {
+        i = 0;
+      };
+
+      typingEffect();
+      return false;
+    };
+
+    timer = setTimeout(loopDeleting, 50);
+  };
+
+  loopDeleting();
+};
+
+
+typingEffect();
+    </script>
+
+
+<body style=" overflow-x: hidden; background: url({% static 'pattern2.png'%})">
+  
+   <section style="margin-top:15px;" id="one"  >
+       <div class="overlay-dark bg-cover bg-center p-5 mb-5" style="background-image:url({% static 'BookAppointment.jpeg'%}); width: 100% ;height:500px;   background-repeat: no-repeat;">
+                <div class="overlay-content text-white text-center "  style="padding-top:50px;" id="texts" >
+                   
+                     <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="1000">Consult Psychologists at the comfort of your home.</p>
+                    <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="2000"> Book Appointments to the doctor of your preference</p>
+                    <p class="lead demo-text mb-4" data-aos="zoom-in"  data-aos-duration="3000"> Quiz and easy consultation </p>
+                    
+                    <a class="btn btn-outline-light rounded-0 px-5" href="#" data-aos="zoom-in"  data-aos-duration="4000" >Book Appointment</a>
+                </div>
+            </div>
+</section>
+
+<section style="margin-top:-28px;" id="two"  >
+
+            <div class="overlay-dark bg-cover bg-center p-5 mb-5" style="background-image:url({% static 'Shop.jpeg'%}); width: 100%;height:500px;   background-repeat: no-repeat;">
+                <div class="overlay-content text-white text-center p-5" >
+                    
+                     <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="1000">Shop stress relieving tools and medicines </p>
+                    <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="2000"> Various books on mental health are also available</p>
+                    <p class="lead demo-text mb-4" data-aos="zoom-in"  data-aos-duration="3000">Sold at very affordable prices</p>
+
+                    <a class="btn btn-outline-light rounded-0 px-5" href="{% url 'store' %}"  data-aos="zoom-in"  data-aos-duration="4000">Shop</a>
+                </div>
+            </div>
+</section>
+
+
+<section style="margin-top:-28px;" id="three"  >
+      <div class="overlay-dark bg-cover bg-center p-5 mb-5" style="background-image:url({% static 'blogs.jpeg'%}); width: 100%;height:500px;  background-repeat: no-repeat;">
+                <div class="overlay-content text-white text-center p-5" >
+                   
+                     <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="1000">You can Post blogs to share your views or life experiences with others</p>
+                    <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="2000"> Similarly you can read blogs posted by others<br> and understand their opinions, views and life experiences   </p>
+                   
+
+                    <a class="btn btn-outline-light rounded-0 px-5" href="{% url 'blog-home' %}" data-aos="zoom-in"  data-aos-duration="3000">Blogs</a>
+                </div>
+            </div>
+</section>
+
+<section style="margin-top:-28px;" id="four">
+      <div class="overlay-dark bg-cover bg-center p-5 mb-5" style="background-image:url({% static 'Playlist.jpeg'%}); width: 100%;height:500px;  background-repeat: no-repeat;">
+                <div class="overlay-content text-white text-center p-5" >
+                   
+                     <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="1000">Create a playlist of stress relieving songs</p>
+                    <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="2000"> These songs can calm you down, uplift your mood <br>or even put you to sleep </p>
+                   
+
+                    <a class="btn btn-outline-light rounded-0 px-5" href="#" data-aos="zoom-in"  data-aos-duration="3000">Playlist</a>
+                </div>
+            </div>
+</section>
+
+
+<div class="container">
+  <h2 class="smiling" style="overflow-y: hidden">Always keep smiling</h2>
+  <div class="row" style="margin-bottom: 30px;">
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'baby2.jpg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'dog2.jpeg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'child.jpeg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'old.jpeg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2"><img src="{% static 'momdaughter.jpeg' %}" style="width: 200px ;height:200px;"></div>
+  </div>
+  <div class="row" style="margin-bottom: 30px;">
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'dog1.jpeg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'friends.jpg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'dadson.jpg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2" style="margin-right: 30px;"><img src="{% static 'cat1.jpg' %}" style="width: 200px ;height:200px;"></div>
+    <div class="col-lg-2"><img src="{% static 'daddaughter.jpeg' %}" style="width: 200px ;height:200px;"></div>
+  </div>
+
+</div>
+
+<div style="background: url({% static 'a18.png' %}) ">
+  <br><br>
+<h3 style="text-align: center" data-aos="zoom-in"  data-aos-duration="2000">Our Testimonals</h3>
+<section class="pb-5">
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-10 col-xl-8 mx-auto">
+                <div class="p-5 bg-white shadow rounded">
+                    
+                    <div class="carousel slide" id="carouselExampleIndicators" data-ride="carousel" data-interval="2000">
+                       
+                        <ol class="carousel-indicators mb-0">
+                            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+
+
+                        
+                        <div class="carousel-inner px-5 pb-4">
+                            
+                            <div class="carousel-item active">
+                                <div class="media"><img class="rounded-circle img-thumbnail" src="{% static 'p5.jpg'%}" alt="" width="75">
+                                    <div class="media-body ml-3">
+                                        <blockquote class="blockquote border-0 p-0">
+                                            <p class="font-italic lead"> <i class="fa fa-quote-left mr-3 text-success"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna .&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-quote-right mr-3 text-success"></i></p>
+                                            <footer class="blockquote-footer">Someone famous in
+                                                <cite title="Source Title">Source Title</cite>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Carousel slide-->
+                            <div class="carousel-item">
+                                <div class="media"><img class="rounded-circle img-thumbnail" src="{% static 'p1.webp' %}" alt="" width="75">
+                                    <div class="media-body ml-3">
+                                           <p class="font-italic lead"> <i class="fa fa-quote-left mr-3 text-success"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna .&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-quote-right mr-3 text-success"></i></p>
+                                            <footer class="blockquote-footer">Someone famous in
+                                                <cite title="Source Title">Source Title</cite>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="carousel-item">
+                                <div class="media"><img class="rounded-circle img-thumbnail" src="{% static 'p3.jpg' %}" alt="" width="75">
+                                    <div class="media-body ml-3">
+                                        <blockquote class="blockquote border-0 p-0">
+                                               <p class="font-italic lead"> <i class="fa fa-quote-left mr-3 text-success"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna .&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-quote-right mr-3 text-success"></i></p>
+                                            <footer class="blockquote-footer">Someone famous in
+                                                <cite title="Source Title">Source Title</cite>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                     
+                        <a class="carousel-control-prev width-auto" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left text-dark text-lg"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next width-auto" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <i class="fa fa-angle-right text-dark text-lg"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<div class="mb_parallax_container" id="mb_parallax_one" data-aos="fade-up"  data-aos-duration="1000">
+  <div class="mb_parallax_overlay">
+    <h1 style="color:yellow">ABOUT US:</h1>
+    <p  style="color:white">
+      Mental health is important at every stage of our life, from childhood and adolescenes through adulthood. However due to stress and busy schedules, people have very little time to consider it as a priority. Our website Inner Pieces is catered towards individuals who are willing to improve their mental health and not worrying about traveling to visit a psychiatrist. Our website is a one stop destination where people can take appointments and have sessions online, buy stress relieving tools, books and prescribed drugs. They can also create a playlist of relaxing melodies that can help users to relax and put them to sleep. Users can also post and read feedback on psychiatrists. </p>
+  </div>
+</div>  
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+          </body>
+  <!-- Footer -->
+  <footer  style="
+  background: linear-gradient(to bottom right ,#19181A ,#2F4454 );
+">
+    <div class="container py-5">
+      <div class="row py-4">
+        <div class="col-lg-6 col-md-6 mb-4 mb-lg-0">
+          <h2 class="text-muted">Contact Us</h2>
+          <p class="font-italic text-muted">4th Floor, Sunrise Towers, Danimma Street, Near Sulurpeta Railway station, Sulurpeta<br>
+            Phone: +22 342 2345 345 | Fax: +22 724 2342 343
+            <br>
+            Email: innerpieces@example.com
+            Skype: my-company</p>
+          <ul class="list-inline mt-4">
+            <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4 mb-lg-0">
+
+          
+        </div>
+      </div>
+    </div>
+    <!-- Copyrights -->
+    <div >
+      <div class="container text-center">
+        <p class="text-muted mb-0 py-2">© 2020 Inner Pieces All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- End -->
+  
+    <script>
+        $(function () {
+    $(window).on('scroll', function () {
+        if ( $(window).scrollTop() > 10 ) {
+            $('.navbar').addClass('active');
+        } else {
+            $('.navbar').removeClass('active');
+        }
+    });
+});
+
+    </script>
+
+  </body>
+</html>
+<!---
+
+-->

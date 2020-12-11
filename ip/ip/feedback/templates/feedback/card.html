@@ -1,0 +1,19 @@
+<div class="col s12 m6 l4 " style="width: 30rem !important;">
+    <div class="card" onclick="myFunction()" id="dash2">
+      <div class="card-header">
+        <div class="row">
+        <div class="wrapper-image person"><img src={{ i.user.image.url }} alt="wipro.com" width="80" height="80" style="border-radius:50%">  </div>
+      <div class="col s8 m8 l8"><span style="font-size:30px; text-align: right;"> {{ i.user.username }}</span><br><span style="font-size:20px;color: grey;">{{ i.hospital_name }}</span>
+       <br>
+       
+        <p style="font-size: 18px; margin-top: 10px;">{{i.experience}} years experience</p>
+      </div>
+      </div>
+  </div>
+        <div class="card-body" style="margin-left: 0px;">  
+          <a href="{% url 'doctor' i.user.username %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="viewProfile">View Profile</a>
+          <a href="{% url 'create-feedback' i.user.username %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="viewProfile">Feedback</a>
+          
+        </div>
+    </div>
+    </div>

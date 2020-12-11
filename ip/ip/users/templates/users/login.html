@@ -1,0 +1,186 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content0 %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"> -->
+
+<style>
+  body{
+    background-color: white;
+    margin-bottom: 0px !important;
+    padding: 0px !important;
+    overflow: hidden;
+  }
+  {% block content10 %}
+  .navbar {
+    transition: all 0.4s;
+    background-color: rgb(245, 133, 58,0.5);
+}
+  .navbar .nav-link {
+    color:rgba(89,52,33,0.5);
+    font-weight: bold;
+    margin-left: 0px;
+  }
+  .navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: rgb(255, 240, 29);
+    text-decoration: none;
+}
+  {% endblock content10 %}
+  #loginButton{
+      color:white;
+      
+			margin-top: 20px;
+			transition-duration: 0.4s;
+			background-color:#6b3421;
+      border-color: #cdb891;
+			border-width: 3px;
+		
+  }
+  #loginButton:hover{
+      border-width: 5px;
+			color:black;
+			background-color: white;
+			border-color: #6b3421;
+    }
+  #SignUp{
+      color:white;
+      border-radius: 30px;;
+			margin-top: 20px;
+			transition-duration: 0.4s;
+			background-color:#fcca40;
+      border-color: #ffd079;
+			border-width: 3px;
+      margin-top: 175px;
+      margin-left: 170px;
+      font-weight: bold;
+  }
+  #SignUp:hover{
+      border-width: 5px;
+			color:black;
+			background-color: white;
+			border-color: :#fcca40;
+      
+    }
+    .sidepart{
+      background-image: url('{% static 'girl.jpg' %}');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      height: 100%;
+      width: 100%;
+      margin-bottom: 0px !important;
+      /* background-size:880px 1000px; */
+    }
+    /* .loginboxes{
+     
+     border-radius: 100px !important;
+     border-bottom: 5px solid red !important;
+   }
+ 
+   .loginboxes.hover{
+   
+   } */
+   input[type=text]{
+     border: 0px;
+     border-bottom: 5px solid #c3b091 !important;
+   }
+
+   input[type=text]:focus {
+     border-radius: 10px;
+     /* border: 1px solid #555; */
+     border-bottom: 0px !important;
+     box-shadow: 2px 2px 2px 2px #c3b091 !important;
+   }
+   input[type=password]{
+     border: 0px;
+     border-bottom: 5px solid #c3b091 !important;
+   }
+
+   input[type=password]:focus {
+    border-radius: 10px;
+     /* border: 1px solid #555; */
+     border-bottom: 0px !important;
+     box-shadow: 2px 2px 2px 2px #c3b091 !important;
+   }
+</style>
+
+{% endblock content0 %}
+
+
+
+{% block content %}
+    <div class="row" style="margin-bottom: 0px !important;margin-top: 32px;">
+      <div class="col-lg-8">
+        <div class="content-section mx-auto" style="border-radius: 00px;margin-left: 40 !important;box-shadow: 0px 0px 0px #999 !important; border-color: white;">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="mb-4" style="text-align: center; font-weight: bold;">Welcome Back,</legend>
+                    <br>
+                    <!-- {{ form|crispy }} -->
+                    <div class="dfirstname">
+                      <label class="lc"><span style="text-align: center; font-weight: bold; margin-left: 210%;">USERNAME</span></label>
+                      <br>
+                      <div class="loginboxes">{{ form.username }}</div>
+                    </div>
+                    
+                    <br>
+                    <div class="dfirstname">
+                      <label class="lc"><span style="text-align: center; font-weight: bold; margin-left: 210%;">PASSWORD</span></label>
+                      <br>
+                      <div class="loginboxes">{{ form.password }}</div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit" id="loginButton" style="margin-left: 0%; width: 100%;border-radius: 40px;"><span style="font-weight: bold;">LOGIN</span></button>
+                    <br>
+                    <small class="text-muted ml-2">
+                        <a href="#"  style="margin-left: 40%;color: black;">Forgot Password?</a>
+                    </small>
+                </div>
+            </form>
+            
+        </div>
+      </div>  
+      <div class="col-lg-4" style="margin-top: 70px;margin-left: 000px;">
+        <div class="sidepart">
+          
+            <div style="margin-top: 0px;">
+              <br>
+              <br>
+              <br>
+              <p style="text-align: center;font-size: 30px;margin-bottom: 20px;">Don't have An Account?</p>
+              <br>
+              <br>
+              <br>
+              <a href="{% url 'register' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="SignUp">Sign Up</a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+            
+          </div>
+        </div>
+      </main>
+    
+{% endblock content %}

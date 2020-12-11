@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+
+{% block content2 %}
+<style>
+body {
+
+    background-color: #f6abb6!important;
+     /*--#95ea94*/
+}
+  /*body, html {
+  height: 100%;
+}*/
+</style>
+
+
+{% endblock content2 %}
+
+{% block content1 %}
+<h1 style=" text-align: center; font-family: 'Arial'; font-weight: 30; font-size: 70px;  ">Login to get token and details about how to use Our Api</h1>
+{% endblock content1 %}
+
+{% block content %}
+<div class="content-section" style="background-color: #dddddd;">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'api_register' %}">Sign Up Now</a>
+            </small>
+        </div>
+</div>
+{% endblock content %}
