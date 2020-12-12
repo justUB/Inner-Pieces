@@ -30,6 +30,11 @@ SERVICES WE ARE EXPOSING:
 2. E-commerce webpage: Other E-commerce Websites can use our service to buy goods that fall under the category of mental health from our website
 3. Doctor profiles: Part time psychologists can give permission for their details to be provided to hiring websites. And the major hospitals who would like to hire psychologists can hire them through the hiring website
 
+MOCK APPLICATIONS:
+1. Hireme: A hiring website which obtains the doctor profiles through our website
+2. Hospital webpage: Website of a hospital which displays feedback of psychologists working thereas well as innerpieces from the feedback given on them in our website.
+3. Blog page: Blog page which leads to the e-commerce page which has 
+
 MARKET ANALYSIS-POTENTIAL CUSTOMERS:
 According to a survey conducted in 2018, Suicide is considered to one of the main reasons of deaths in India. It even surpasses the count of deaths by accidents by a huge difference.
 
