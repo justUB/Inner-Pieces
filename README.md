@@ -9,6 +9,7 @@ Js
 JQuery
 Python
 Django
+Django Rest
 
 MAIN COMPONENTS IN OUR WEBSITE:
 -Booking appointment with Psychologists
