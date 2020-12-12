@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Feedback of Doctor</title>
+
+        <style>
+            body    {
+                background-color: skyblue;
+            }
+            .FeedbackView   {
+                color: white;
+                border : 2px brown solid;
+                border-radius : 10px;
+                border-length : 15px;
+                width : 1000px;
+                text-align: 50em;
+                margin-left: 10em;
+            }
+            .form-group {
+                margin-left: 25em;
+            }
+            .fv1   {
+                margin-left: 1.5em;
+            }
+        </style>
+        
+    </head>
+    <body>
+        
+        
+        <div class="container">
+            <h1>Search Doctor Feedback  </h1>
+            <form method="post" action='/doctorsfeedback/'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="col-lg-5">
+                        <label>Hospital Name : </label><input type="text" name="srh" class="form-control" size="50" placeholder="Enter Hospital Name">
+                    </div>
+                    <br>
+                    <label class="col-lg-2">
+                        <button type="submit" class="btn btn-danger" style="margin-left: 15em;">Search</button>  
+                    </label>
+                </div>
+            </form>
+            <div>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for k in messages %}
+                        <li style="color:red">{{ k }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div><br>
+            <div style="color: blue">
+                
+                {% for k in feedback %}
+                    <br>
+                    <div class="FeedbackView">
+                        <div class="fv1">
+                        <label>First Name : {{ k.doctor.user.firstname }}</label>
+                        <br>
+                        <label>Last Name : {{ k.doctor.user.lastname }}</label>
+                        <br>
+                        <label>Email : {{ k.doctor.user.email }}</label>
+                        <br>
+                        <label>Experience : {{ k.doctor.experience }}</label>
+                        <br>
+                        <label>Hospital Name : {{ k.doctor.hospital_name }}</label>
+                        <br>
+                        <label>Specialization : {{ k.doctor.specialization }}</label>
+                        <br>
+                        <label>Feedback Title : {{ k.title }} </label> 
+                        <br>
+                        <label>Feedback Content : {{ k.content }}</label>
+                        <br>
+                        <label>Feedback Posted Date : {{ k.date_posted }}</label>
+                        <br>
+                        </div>
+                   </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </body>
+</html>

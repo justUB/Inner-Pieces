@@ -1,0 +1,15 @@
+{% extends "S20180010074/home.html" %}
+
+{% block content1 %}
+	<title>Logout</title>
+	<h1 style="margin-left: 375px; font-family: 'Arial'; font-weight: 30; font-size: 70px;  ">Logout Page</h1>
+{% endblock content1 %}
+
+{% block content %}
+<h2>You have been logged out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In Again</a>
+        </small>
+</div>
+{% endblock content %}

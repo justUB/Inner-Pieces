@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<style>
+
+	body, html {
+  height: 100%;
+}
+.backgroundimage1{
+    width: 100%;
+    height: 100%;
+    background-image: url( "{% static 'a.jpg' %}");
+    background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+</style>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% block content1 %}
+  <link rel="stylesheet" type="text/css" href="{% static 'a.css' %}">
+  {% if title %}
+        <title>{{ title }}</title>
+        <h1 style="margin-left: 375px; font-family: 'Arial'; font-weight: 30; font-size: 70px;  ">Welcome to {{title}}</h1>
+    {% else %}
+        <title>Logout</title>
+        <h1 style="margin-left: 375px; font-family: 'Arial'; font-weight: 30; font-size: 70px;  ">Logout Page</h1>
+  {% endif %}
+{% endblock content1 %}
+	
+	
+  
+  {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}">
+                      {{message}}
+                    </div>
+                    <!--<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>-->
+                {% endfor %}
+            </ul>
+  {% endif %}
+  
+<!--#e3f2fd-->
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a4d5f8 ;">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+       {% else %} 
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'login' %}">LogIn </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+</head>
+{% block content %}
+{% endblock content %}
+<body>
+	
+
+	<div class="backgroundimage1">
+           
+    </div>
+        
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+ 
