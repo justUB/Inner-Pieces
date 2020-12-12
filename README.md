@@ -15,6 +15,17 @@ JQuery
 Python
 Django
 
+PACKAGES USED:
+Django              3.1.2
+django-crispy-forms 1.9.2
+djangorestframework 3.12.2
+Pillow              8.0.1
+pytest              6.1.2
+pytest-django       4.1.0
+python-dateutil     2.8.1
+requests            2.25.0
+spotipy             2.16.1
+
 MAIN COMPONENTS IN OUR WEBSITE:
 1.Booking appointment with Psychologists
 2.Blogs
@@ -33,7 +44,7 @@ SERVICES WE ARE EXPOSING:
 MOCK APPLICATIONS:
 1. Hireme: A hiring website which obtains the doctor profiles through our website
 2. Hospital webpage: Website of a hospital which displays feedback of psychologists working thereas well as innerpieces from the feedback given on them in our website.
-3. Blog page: Blog page which leads to the e-commerce page which has 
+3. Blog page: Blog page which leads to the e-commerce page which has items sold on inner pieces shop page
 
 MARKET ANALYSIS-POTENTIAL CUSTOMERS:
 According to a survey conducted in 2018, Suicide is considered to one of the main reasons of deaths in India. It even surpasses the count of deaths by accidents by a huge difference.
