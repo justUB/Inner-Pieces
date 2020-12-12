@@ -34,14 +34,18 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('get/profile', user_views.get_doctor_profile, name='get_profile'),
     path('', include('blog.urls')),
+    path('users/', include('users.urls')),
     path('ecom/',include('ecommerce.urls'),name='ecom'),
     path('feedback/', include('feedback.urls')),
-
+    path('bookAppointment/',include('bookApp.urls'),name='bookApp'),
     path('register-api/', apiuser_views.register, name='api_register'),
     path('login-api/', apiuser_views.login_view, name='api_login'),
     path('logout-api/', apiuser_views.logout_view, name='api_logout'),
     path('api-profile/', apiuser_views.profile, name='api_profile'),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+
+    path('feedbackapi/',include('feedback.api.urls')),
+    path('playlist/',include('playlist.urls')),
     
 ]
 

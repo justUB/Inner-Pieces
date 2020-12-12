@@ -13,7 +13,7 @@
 <style>
 body {
 
-    background-color: #d49292!important ;
+    background-color: white!important ;
      /*--#95ea94*/
 }
   /*body, html {
@@ -27,7 +27,7 @@ body {
 
   <link rel="stylesheet" type="text/css" href="{% static 'b.css' %}">
 <!--#e3f2fd-->
-	<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a4d5f8 ;">
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#bd005e  ;">
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -36,15 +36,15 @@ body {
     <ul class="navbar-nav">
       <li class="nav-item active">
         {% if user.is_authenticated %}
-        <a class="nav-link" href="{% url 'api_logout' %}">Logout </a>
+        <a class="nav-link" href="{% url 'api_logout' %}"><span style="color: white;">Logout</span> </a>
        {% else %} 
       </li>
       
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
+        <a class="nav-link" href="{% url 'register' %}"><span style="color: white;">Register</span> </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'login' %}">LogIn </a>
+        <a class="nav-link" href="{% url 'login' %}"><span style="color: white;">LogIn</span> </a>
       </li>
       {% endif %}
     </ul>

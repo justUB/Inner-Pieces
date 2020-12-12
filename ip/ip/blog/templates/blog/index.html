@@ -329,7 +329,7 @@ p{
                         <a class="nav-link scroll-link" href="{% url 'blog-home' %}">Blogs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll-link" href="#four">Playlist</a>
+                        <a class="nav-link scroll-link" href="{% url 'playlist' %}">Playlist</a>
                     </li>
               {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -436,7 +436,7 @@ typingEffect();
                     <p class="lead demo-text mb-1" data-aos="zoom-in"  data-aos-duration="2000"> Book Appointments to the doctor of your preference</p>
                     <p class="lead demo-text mb-4" data-aos="zoom-in"  data-aos-duration="3000"> Quiz and easy consultation </p>
                     
-                    <a class="btn btn-outline-light rounded-0 px-5" href="#" data-aos="zoom-in"  data-aos-duration="4000" >Book Appointment</a>
+                    <a class="btn btn-outline-light rounded-0 px-5" href="{% url 'bookApp' %}" data-aos="zoom-in"  data-aos-duration="4000" >Book Appointment</a>
                 </div>
             </div>
 </section>

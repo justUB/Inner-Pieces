@@ -28,7 +28,7 @@ class DoctorRegisterForm(forms.ModelForm):
 
     class Meta:
         model = Doctor
-        fields = ['experience','hospital_name','specialization','consultation_fee']
+        fields = ['experience','hospital_name','specialization','consultation_fee','is_interested']
 
 class UserUpdateForm(forms.ModelForm):
 

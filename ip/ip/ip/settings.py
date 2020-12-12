@@ -32,6 +32,7 @@ AUTH_USER_MODEL = 'users.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'bookApp.apps.BookappConfig',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'ecommerce.apps.EcommerceConfig',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'playlist',
 ]
 
 
@@ -146,9 +148,11 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'profile'
 LOGOUT_REDIRECT_URL = 'login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'innerpiecess@gmail.com'
+EMAIL_HOST_PASSWORD = 'inner@123Pieces'
+

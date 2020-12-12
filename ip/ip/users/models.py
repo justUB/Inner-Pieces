@@ -36,6 +36,7 @@ class Doctor(models.Model):
     hospital_name = models.CharField(max_length = 200)
     specialization = models.CharField(max_length = 200)
     consultation_fee = models.IntegerField(validators=[MinValueValidator(0)])
+    is_interested=models.BooleanField("is interested", default=False)
     
     def __str__(self):
     	return f'{self.user.username} Dcotor'

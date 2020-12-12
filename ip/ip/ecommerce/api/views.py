@@ -1,14 +1,15 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
 from users.models import User
 from ecommerce.models import *
 from .serializers import ItemsSerializer,cartSerializer,cartItemSerializer
 import json,datetime
-
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(http_method_names=['GET','POST'])
+@permission_classes([IsAuthenticated])
 def api(request):
     if request.method == 'GET':
         return item_get(request)
@@ -17,6 +18,7 @@ def api(request):
         return item_post(request)
 
 @api_view(http_method_names=['GET','POST'])
+@permission_classes([IsAuthenticated])
 def cart_view(request):
     if request.method == 'GET':
         return cart_get(request)
@@ -25,6 +27,7 @@ def cart_view(request):
         return cart_post(request)
 
 @api_view(http_method_names=['GET','POST'])
+@permission_classes([IsAuthenticated])
 def checkout_view(request):
     if request.method == 'POST':
         return checkout_post(request)
@@ -85,6 +88,7 @@ def order_get(request):
     except:
         return Response(status=404)
 
+
 def cart_post(request): 
 
     data = json.loads(request.body)
@@ -112,7 +116,8 @@ def cart_post(request):
     order_item = cart_item.objects.filter(order = order)
     serializer = cartItemSerializer(order_item,many=True)
     return Response(data=serializer.data)
-    
+
+   
 def item_get(request):
     try:
         i_data = item.objects.all()
@@ -120,6 +125,7 @@ def item_get(request):
         return Response(data=serializer.data)
     except item.NotFound():
         return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 def item_post(request):
     pass
